@@ -4,28 +4,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="232.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.weatherandhoroscopeappv2.MainFrameController">
-   <children>
-      <MenuBar prefHeight="29.0" prefWidth="230.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Настройки">
+<?import java.net.URL?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0"
+      prefWidth="400.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.weatherandhoroscopeappv2.MainFrameController">
+    <stylesheets>
+        <URL value="@css/application.css"/>
+    </stylesheets>
+    <MenuBar prefHeight="29.0" prefWidth="400.0">
+        <Menu mnemonicParsing="false" text="Настройки">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#settingsMenuItem" text="Настройки..." />
-                <MenuItem mnemonicParsing="false" onAction="#aboutMenuItem" text="Разработчики..." />
+                <MenuItem mnemonicParsing="false" onAction="#settingsMenuItem" text="Настройки..."/>
+                <MenuItem mnemonicParsing="false" onAction="#aboutMenuItem" text="Разработчики..."/>
             </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <Button layoutX="75.0" layoutY="318.0" mnemonicParsing="false" onAction="#updateButton" text="Обновить" />
-      <Label layoutX="14.0" layoutY="41.0" text="На улице сейчас" />
-      <Label fx:id="tempNumberLabel" graphicTextGap="1.0" layoutX="14.0" layoutY="48.0" prefHeight="63.0" prefWidth="67.0" textAlignment="CENTER">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Label fx:id="outsideLabel" graphicTextGap="1.0" layoutX="81.0" layoutY="48.0" prefHeight="63.0" prefWidth="133.0" wrapText="true" />
-      <Label fx:id="feelOutsideLabel" alignment="TOP_LEFT" graphicTextGap="0.0" layoutX="14.0" layoutY="100.0" prefHeight="40.0" prefWidth="200.0" wrapText="true" />
-      <Label layoutX="14.0" layoutY="134.0" text="Ваш гороскоп на сегодня" />
-      <TextArea fx:id="horoscopeTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" editable="false" focusTraversable="false" layoutX="15.0" layoutY="154.0" pickOnBounds="false" prefHeight="155.0" prefWidth="200.0" scaleShape="false" wrapText="true" />
-   </children>
+        </Menu>
+    </MenuBar>
+    <Button layoutX="272.0" layoutY="329.0" mnemonicParsing="false" onAction="#updateButton" text="Обновить"/>
+    <Label layoutX="14.0" layoutY="41.0" text="На улице сейчас"/>
+    <Label fx:id="tempNumberLabel" graphicTextGap="1.0" layoutX="14.0" layoutY="57.0" prefHeight="63.0" prefWidth="67.0"
+           text="10" textAlignment="CENTER" styleClass=".text">
+        <font>
+          <Font size="33.0"/>
+        </font>
+    </Label>
+    <Label fx:id="outsideLabel" graphicTextGap="1.0" layoutX="81.0" layoutY="57.0" prefHeight="63.0" prefWidth="133.0"
+           text="тепелее, чем обычно" wrapText="true"/>
+    <Label fx:id="feelOutsideLabel" alignment="TOP_LEFT" graphicTextGap="0.0" layoutX="14.0" layoutY="115.0"
+           prefHeight="40.0" prefWidth="200.0" wrapText="true"/>
+    <Label layoutX="14.0" layoutY="154.0" text="Ваш гороскоп на сегодня"/>
+    <TextArea fx:id="horoscopeTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE"
+              editable="false" focusTraversable="false" layoutX="15.0" layoutY="173.0" pickOnBounds="false"
+              prefHeight="181.0" prefWidth="200.0" scaleShape="false" wrapText="true"/>
+    <Label fx:id="timeLabel" layoutX="270.0" layoutY="36.0" prefHeight="27.0" prefWidth="80.0" text="23:59:59"
+           textAlignment="CENTER">
+        <font>
+          <Font size="17.0"/>
+        </font>
+    </Label>
+    <Label alignment="TOP_CENTER" layoutX="229.0" layoutY="62.0" prefHeight="17.0" prefWidth="164.0"
+           text="Новости сегодня" textAlignment="CENTER"/>
+    <TextArea fx:id="newsTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE"
+              editable="false" focusTraversable="false" layoutX="228.0" layoutY="85.0" prefHeight="234.0"
+              prefWidth="164.0" scaleShape="false" wrapText="true"/>
 </Pane>

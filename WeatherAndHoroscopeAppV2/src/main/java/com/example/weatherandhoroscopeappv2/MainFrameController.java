@@ -8,13 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.jsoup.Jsoup;
 
 public class MainFrameController {
 
@@ -22,12 +20,17 @@ public class MainFrameController {
     public File settingsFile = new File(settingsFilePath);
     public Properties properties = new Properties();
 
+    Parser parser;
+
     public Label tempNumberLabel;
     public Label outsideLabel;
     public Label feelOutsideLabel;
     public TextArea horoscopeTextArea;
+    public Label timeLabel;
+    public TextArea newsTextArea;
 
     public void initialize(){
+        parser = new Parser(settingsFile);
         try {
             properties.load(new FileInputStream(settingsFile));
         } catch (IOException e) {
@@ -60,6 +63,7 @@ public class MainFrameController {
     public void updateButton(ActionEvent actionEvent) {
         try {
             properties.load(new FileInputStream(settingsFile));
+            parser = new Parser(settingsFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,52 +71,18 @@ public class MainFrameController {
     }
 
     private void setTextOnElements(){
-        tempNumberLabel.setText(getWeatherDegreeInfo());
-        outsideLabel.setText(getWeatherAdditionalInfo());
-        tempNumberLabel.setText(getWeatherDegreeInfo());
-
+        tempNumberLabel.setText(parser.getWeatherDegreeInfo());
+        outsideLabel.setText(parser.getWeatherAdditionalInfo());
         if (properties.getProperty("feelLike").equals("ON")){
-            feelOutsideLabel.setText(getWeatherFeelsOutside());
+            feelOutsideLabel.setText(parser.getWeatherFeelsOutside());
         } else {
             feelOutsideLabel.setText("");
         }
-        horoscopeTextArea.setText(getHoroscope());
+        horoscopeTextArea.setText(parser.getHoroscope());
+        timeLabel.setText(parser.getTime());
+        newsTextArea.setText(parser.getNews());
+
     }
 
-    private String getWeatherFeelsOutside(){
-        System.out.println("OUTSIDEIS" + getTextByClass("_1WjP"));
-        return getTextByClass("_1WjP");
-    }
 
-    private String getWeatherDegreeInfo(){
-       return getTextByClass("_1HBR").substring(0,3);
-    }
-
-    private String getWeatherAdditionalInfo(){
-        return getTextByClass("Hixd");
-    }
-
-    private String getHoroscope(){
-        try {
-            Document document = Jsoup.connect("https://horoscopes.rambler.ru/" + properties.getProperty("zodiac") + "/").get();
-            Elements elementsByClass = document.getElementsByClass("mtZOt");
-            return elementsByClass.first().text();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return "Произошла ошибка. Попробуйте позже.";
-    }
-
-    private String getTextByClass(String classTeg){
-        try {
-            Document document = Jsoup.connect(
-                    "https://weather.rambler.ru/" + properties.getProperty("city") + "/").get();
-            Elements elementsByClass = document.getElementsByClass(classTeg);
-            return  elementsByClass.text();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "Произошла ошибка. Попробуйте позже.";
-    }
 }

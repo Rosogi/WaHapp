@@ -1,0 +1,7 @@
+.pane {
+    -fx-background-image: url('../Images/Background.jpeg');
+}
+.text {
+    font-family: Andale Mono;
+
+}
