@@ -2,6 +2,14 @@
     -fx-background-image: url('../Images/Background.jpeg');
 }
 .text {
-    font-family: Andale Mono;
+    -fx-text-fill: #ffffff;
+}
 
+.textNew {
+    -fx-text-fill: #000000;
+    -fx-font-family: "Arial";
+}
+
+.textFadedBlack {
+    -fx-text-fill: #0f0f0f;
 }

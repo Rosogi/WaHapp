@@ -14,6 +14,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ *
+ * Autor: Rosogi
+ * Company: RosogiSotf
+ *
+ */
+
+
 public class MainFrameController {
 
     private final String settingsFilePath = System.getProperty("user.home") + File.separator + "Waha.properties";
@@ -80,9 +88,35 @@ public class MainFrameController {
         }
         horoscopeTextArea.setText(parser.getHoroscope());
         timeLabel.setText(parser.getTime());
-        newsTextArea.setText(parser.getNews());
-
+        setNews();
     }
 
+    private void setNews(){
+        String[] news = parser.getNews();
+        for (int i = 0; i < news.length; i++){
+            news[i] = deleteNewsTitles(news[i]);
+            newsTextArea.appendText(news[i]);
+            newsTextArea.appendText("\n");
+            newsTextArea.appendText("--------------------");
+            newsTextArea.appendText("\n");
+        }
+    }
 
+    private String deleteNewsTitles(String newsHeader){
+        newsHeader = newsHeader.replace("Показать еще", " ");
+        newsHeader =  newsHeader.replace("^Россия$", " ");
+        newsHeader =  newsHeader.replace("Мир", " ");
+        newsHeader =  newsHeader.replace("Бывший СССР", " ");
+        newsHeader =  newsHeader.replace("Экономика", " ");
+        newsHeader =  newsHeader.replace("Наука и техника", " ");
+        newsHeader =  newsHeader.replace("Культура", " ");
+        newsHeader =  newsHeader.replace("Спорт", " ");
+        newsHeader =  newsHeader.replace("Интернет и СМИ", " ");
+        newsHeader =  newsHeader.replace("Ценности", " ");
+        newsHeader =  newsHeader.replace("Путешествия", " ");
+        newsHeader =  newsHeader.replace("Из жизни", " ");
+        newsHeader =  newsHeader.replace("Среда обитания", " ");
+        newsHeader =  newsHeader.replace("Загрузка", " ");
+        return newsHeader;
+    }
 }

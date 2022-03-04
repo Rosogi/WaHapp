@@ -34,7 +34,6 @@ public class Parser {
         newsDocument = Jsoup.connect("https://lenta.ru/parts/news/").get();
     }
 
-
     public String getWeatherFeelsOutside(){
         Elements feelWeather = weatherDocument.getElementsByClass("_1WjP");
         return feelWeather.text();
@@ -42,7 +41,8 @@ public class Parser {
 
     public String getWeatherDegreeInfo(){
         Elements weatherDegree = weatherDocument.getElementsByClass("_1HBR");
-        return weatherDegree.text().substring(0,3);
+        String[] weather = weatherDegree.text().split(" ");
+        return weather[0];
     }
 
     public String getWeatherAdditionalInfo(){
@@ -54,16 +54,11 @@ public class Parser {
         Elements horoscope = horoscopeDocument.getElementsByClass("mtZOt");
         return horoscope.first().text();
     }
-    //<li class="parts-page__item"><a class="_parts-news card-full-news ojioi" href="/news/2022/03/03/kushat_kebab/"><h3 class="card-full-news__title wpzlkdc">Жителям регионов России стали доступнее перелеты в Турцию</h3><div class="ccuajngkn card-full-news__info"><time class="card-full-news__info-item card-full-news__date">17:20</time><span class="gbfvqn card-full-news__rubric card-full-news__info-item">Путешествия</span></div></a></li>
-    public String getNews(){
+    public String[] getNews(){
         String result = "";
         Elements news = newsDocument.getElementsByClass("parts-page__item");
-        //return news.next().text();
         String[] formattedText = news.text().split("[0-9][0-9]:[0-9][0-9]");
-        for (int i = 0; i < formattedText.length; i++){
-            result = result + formattedText[i] + "\n";
-        }
-        return result;
+        return formattedText;
     }
 
     public String getTime(){

@@ -1,49 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0"
-      prefWidth="400.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.weatherandhoroscopeappv2.MainFrameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="400.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.weatherandhoroscopeappv2.MainFrameController">
     <stylesheets>
-        <URL value="@css/application.css"/>
+        <URL value="@css/application.css" />
     </stylesheets>
-    <MenuBar prefHeight="29.0" prefWidth="400.0">
-        <Menu mnemonicParsing="false" text="Настройки">
+    <MenuBar prefHeight="17.0" prefWidth="400.0" style="-fx-background-color: #38a2a6; -fx-border-color: #2c8185; -fx-border-width: 1;" stylesheets="@css/application.css">
+        <Menu mnemonicParsing="false" style="-fx-border-width: 1; -fx-border-color: #2c8185;" text="Настройки">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#settingsMenuItem" text="Настройки..."/>
-                <MenuItem mnemonicParsing="false" onAction="#aboutMenuItem" text="Разработчики..."/>
+                <MenuItem mnemonicParsing="false" onAction="#settingsMenuItem" text="Настройки..." />
+                <MenuItem mnemonicParsing="false" onAction="#aboutMenuItem" text="Разработчики..." />
             </items>
         </Menu>
     </MenuBar>
-    <Button layoutX="272.0" layoutY="329.0" mnemonicParsing="false" onAction="#updateButton" text="Обновить"/>
-    <Label layoutX="14.0" layoutY="41.0" text="На улице сейчас"/>
-    <Label fx:id="tempNumberLabel" graphicTextGap="1.0" layoutX="14.0" layoutY="57.0" prefHeight="63.0" prefWidth="67.0"
-           text="10" textAlignment="CENTER" styleClass=".text">
+    <Button layoutX="272.0" layoutY="329.0" mnemonicParsing="false" onAction="#updateButton" stylesheets="@css/application.css" text="Обновить">
+      <effect>
+         <InnerShadow />
+      </effect></Button>
+    <Label layoutX="14.0" layoutY="41.0" stylesheets="@css/application.css" text="На улице сейчас">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <Label fx:id="tempNumberLabel" alignment="CENTER" graphicTextGap="1.0" layoutX="14.0" layoutY="57.0" prefHeight="63.0" prefWidth="67.0" styleClass=".text" stylesheets="@css/application.css">
         <font>
-          <Font size="33.0"/>
+          <Font size="33.0" />
         </font>
+      <effect>
+         <DropShadow />
+      </effect>
     </Label>
-    <Label fx:id="outsideLabel" graphicTextGap="1.0" layoutX="81.0" layoutY="57.0" prefHeight="63.0" prefWidth="133.0"
-           text="тепелее, чем обычно" wrapText="true"/>
-    <Label fx:id="feelOutsideLabel" alignment="TOP_LEFT" graphicTextGap="0.0" layoutX="14.0" layoutY="115.0"
-           prefHeight="40.0" prefWidth="200.0" wrapText="true"/>
-    <Label layoutX="14.0" layoutY="154.0" text="Ваш гороскоп на сегодня"/>
-    <TextArea fx:id="horoscopeTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE"
-              editable="false" focusTraversable="false" layoutX="15.0" layoutY="173.0" pickOnBounds="false"
-              prefHeight="181.0" prefWidth="200.0" scaleShape="false" wrapText="true"/>
-    <Label fx:id="timeLabel" layoutX="270.0" layoutY="36.0" prefHeight="27.0" prefWidth="80.0" text="23:59:59"
-           textAlignment="CENTER">
+    <Label fx:id="outsideLabel" graphicTextGap="1.0" layoutX="81.0" layoutY="57.0" prefHeight="63.0" prefWidth="133.0" stylesheets="@css/application.css" wrapText="true">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <Label fx:id="feelOutsideLabel" alignment="TOP_LEFT" graphicTextGap="0.0" layoutX="14.0" layoutY="115.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@css/application.css" wrapText="true">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <Label layoutX="14.0" layoutY="154.0" stylesheets="@css/application.css" text="Ваш гороскоп на сегодня">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <TextArea fx:id="horoscopeTextArea" blendMode="MULTIPLY" cache="true" cacheHint="QUALITY" cacheShape="false" centerShape="false" depthTest="ENABLE" editable="false" focusTraversable="false" layoutX="15.0" layoutY="173.0" pickOnBounds="false" prefHeight="181.0" prefWidth="200.0" scaleShape="false" styleClass="textNew" stylesheets="@css/application.css" wrapText="true">
+      <effect>
+         <InnerShadow blurType="ONE_PASS_BOX" height="255.0" radius="127.0" width="255.0">
+            <color>
+               <Color opacity="0.37021273374557495" />
+            </color>
+         </InnerShadow>
+      </effect></TextArea>
+    <Label fx:id="timeLabel" layoutX="270.0" layoutY="36.0" prefHeight="27.0" prefWidth="80.0" stylesheets="@css/application.css" textAlignment="CENTER">
         <font>
-          <Font size="17.0"/>
+          <Font size="17.0" />
         </font>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect>
     </Label>
-    <Label alignment="TOP_CENTER" layoutX="229.0" layoutY="62.0" prefHeight="17.0" prefWidth="164.0"
-           text="Новости сегодня" textAlignment="CENTER"/>
-    <TextArea fx:id="newsTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE"
-              editable="false" focusTraversable="false" layoutX="228.0" layoutY="85.0" prefHeight="234.0"
-              prefWidth="164.0" scaleShape="false" wrapText="true"/>
+    <Label alignment="TOP_CENTER" layoutX="229.0" layoutY="62.0" prefHeight="17.0" prefWidth="164.0" stylesheets="@css/application.css" text="Новости сегодня" textAlignment="CENTER">
+      <effect>
+         <DropShadow>
+            <color>
+               <Color opacity="0.73617023229599" />
+            </color>
+         </DropShadow>
+      </effect></Label>
+    <TextArea fx:id="newsTextArea" blendMode="MULTIPLY" cacheShape="false" centerShape="false" depthTest="DISABLE" editable="false" focusTraversable="false" layoutX="228.0" layoutY="85.0" prefHeight="234.0" prefWidth="164.0" scaleShape="false" stylesheets="@css/application.css" wrapText="true">
+      <effect>
+         <InnerShadow height="255.0" radius="127.0" width="255.0">
+            <color>
+               <Color opacity="0.3700000047683716" />
+            </color>
+         </InnerShadow>
+      </effect></TextArea>
 </Pane>
